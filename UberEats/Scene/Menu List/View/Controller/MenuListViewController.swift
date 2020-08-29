@@ -18,13 +18,13 @@ class MenuListViewController: UIViewController {
    var data:[[MenuItem]] = []
    var sections:[String] = []
     var currentVisibleSection:Int = 0
-     var lastContentOffset: CGFloat = 0
+    var lastContentOffset: CGFloat = 0
     
     
 //    init(_ viewModel:MenuListViewModel) {
 //        self.viewModel = viewModel
 //    }
-    
+//
     override func viewDidLoad() {
         super.viewDidLoad()
         fillData()
@@ -71,8 +71,6 @@ class MenuListViewController: UIViewController {
     func fillData() {
         viewModel = MenuListViewModel(RestaurantMenu.getStaticData()!)
     }
-    
-    
     
     func setSelectedSegmentOnScroll(_ index:Int){
         guard index < viewModel.numberOfSections else { return }
