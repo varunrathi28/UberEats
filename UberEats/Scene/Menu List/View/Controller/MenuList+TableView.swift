@@ -44,7 +44,17 @@ extension MenuListViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         print("end \(indexPath)")
          if indexPath.section != currentVisibleSection {
-            currentVisibleSection = indexPath.section
+          //  currentVisibleSection = indexPath.section
         }
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+            if scrollView == tableView {
+               if let indexpath = tableView.indexPathsForVisibleRows?.first, indexpath.row == 0 {
+                    setSelectedSegmentOnScroll(indexpath.section)
+               }
+            }
+    }
+    
+   
 }
