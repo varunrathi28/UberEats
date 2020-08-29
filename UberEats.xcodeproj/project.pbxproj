@@ -19,8 +19,16 @@
 		8B66621524F952FA00FE016B /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66621424F952FA00FE016B /* CustomSegmentedControl.swift */; };
 		8B66621724F994A700FE016B /* CustomControlSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66621624F994A700FE016B /* CustomControlSegment.swift */; };
 		8B66621924F9B0FC00FE016B /* ScrollableSegmentedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66621824F9B0FC00FE016B /* ScrollableSegmentedController.swift */; };
+		8B66621B24FA273900FE016B /* MenuList+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66621A24FA273900FE016B /* MenuList+TableView.swift */; };
+		8B66621E24FA28EA00FE016B /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B66621D24FA28EA00FE016B /* SectionHeaderView.xib */; };
+		8B66622024FA293200FE016B /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66621F24FA293200FE016B /* SectionHeaderView.swift */; };
+		8B66622224FA302D00FE016B /* MyCustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66622124FA302D00FE016B /* MyCustomSegmentControl.swift */; };
+		8B66622524FA5B7D00FE016B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66622424FA5B7D00FE016B /* Item.swift */; };
+		8B66622724FA5BA800FE016B /* RestaurantMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66622624FA5BA800FE016B /* RestaurantMenu.swift */; };
 		8BC4531024FA220600D32216 /* MenuCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4530F24FA220600D32216 /* MenuCellViewModel.swift */; };
 		8BC4531224FA23E100D32216 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4531124FA23E100D32216 /* ItemViewModel.swift */; };
+		8BC4531424FA250E00D32216 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BC4531324FA250E00D32216 /* data.json */; };
+		8BC4531624FA47F500D32216 /* MaterialSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4531524FA47F500D32216 /* MaterialSegmentedControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +46,16 @@
 		8B66621424F952FA00FE016B /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		8B66621624F994A700FE016B /* CustomControlSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomControlSegment.swift; sourceTree = "<group>"; };
 		8B66621824F9B0FC00FE016B /* ScrollableSegmentedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableSegmentedController.swift; sourceTree = "<group>"; };
+		8B66621A24FA273900FE016B /* MenuList+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuList+TableView.swift"; sourceTree = "<group>"; };
+		8B66621D24FA28EA00FE016B /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
+		8B66621F24FA293200FE016B /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		8B66622124FA302D00FE016B /* MyCustomSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomSegmentControl.swift; sourceTree = "<group>"; };
+		8B66622424FA5B7D00FE016B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		8B66622624FA5BA800FE016B /* RestaurantMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMenu.swift; sourceTree = "<group>"; };
 		8BC4530F24FA220600D32216 /* MenuCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCellViewModel.swift; sourceTree = "<group>"; };
 		8BC4531124FA23E100D32216 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
+		8BC4531324FA250E00D32216 /* data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		8BC4531524FA47F500D32216 /* MaterialSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialSegmentedControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +111,7 @@
 		8B66620724F945D600FE016B /* Menu List */ = {
 			isa = PBXGroup;
 			children = (
+				8B66622324FA5B5800FE016B /* Models */,
 				8B66620824F945D600FE016B /* View Models */,
 				8B66620924F945D600FE016B /* Common */,
 				8B66620A24F945D600FE016B /* View */,
@@ -123,10 +140,10 @@
 		8B66620A24F945D600FE016B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8B66622824FA64F100FE016B /* Cell */,
+				8B66622924FA64F100FE016B /* Controller */,
+				8B66621C24FA28DD00FE016B /* Header */,
 				8B66621324F952E500FE016B /* Custom Segmented Control */,
-				8B66621224F94D8600FE016B /* Section tile */,
-				8B66620C24F945F100FE016B /* MenuListViewController.swift */,
-				8B66621024F9461D00FE016B /* MenuCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -134,15 +151,9 @@
 		8B66620B24F945D600FE016B /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				8BC4531324FA250E00D32216 /* data.json */,
 			);
 			path = Utility;
-			sourceTree = "<group>";
-		};
-		8B66621224F94D8600FE016B /* Section tile */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Section tile";
 			sourceTree = "<group>";
 		};
 		8B66621324F952E500FE016B /* Custom Segmented Control */ = {
@@ -151,8 +162,45 @@
 				8B66621424F952FA00FE016B /* CustomSegmentedControl.swift */,
 				8B66621624F994A700FE016B /* CustomControlSegment.swift */,
 				8B66621824F9B0FC00FE016B /* ScrollableSegmentedController.swift */,
+				8B66622124FA302D00FE016B /* MyCustomSegmentControl.swift */,
+				8BC4531524FA47F500D32216 /* MaterialSegmentedControl.swift */,
 			);
 			path = "Custom Segmented Control";
+			sourceTree = "<group>";
+		};
+		8B66621C24FA28DD00FE016B /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				8B66621D24FA28EA00FE016B /* SectionHeaderView.xib */,
+				8B66621F24FA293200FE016B /* SectionHeaderView.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		8B66622324FA5B5800FE016B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8B66622424FA5B7D00FE016B /* Item.swift */,
+				8B66622624FA5BA800FE016B /* RestaurantMenu.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8B66622824FA64F100FE016B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8B66621024F9461D00FE016B /* MenuCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		8B66622924FA64F100FE016B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8B66620C24F945F100FE016B /* MenuListViewController.swift */,
+				8B66621A24FA273900FE016B /* MenuList+TableView.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,8 +261,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B6661FE24F9450200FE016B /* LaunchScreen.storyboard in Resources */,
+				8B66621E24FA28EA00FE016B /* SectionHeaderView.xib in Resources */,
 				8B6661FB24F9450200FE016B /* Assets.xcassets in Resources */,
 				8B6661F924F944FF00FE016B /* Main.storyboard in Resources */,
+				8BC4531424FA250E00D32216 /* data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,14 +277,20 @@
 			files = (
 				8B66621524F952FA00FE016B /* CustomSegmentedControl.swift in Sources */,
 				8BC4531024FA220600D32216 /* MenuCellViewModel.swift in Sources */,
+				8B66622024FA293200FE016B /* SectionHeaderView.swift in Sources */,
+				8B66621B24FA273900FE016B /* MenuList+TableView.swift in Sources */,
+				8B66622524FA5B7D00FE016B /* Item.swift in Sources */,
 				8B66621924F9B0FC00FE016B /* ScrollableSegmentedController.swift in Sources */,
 				8BC4531224FA23E100D32216 /* ItemViewModel.swift in Sources */,
+				8B66622224FA302D00FE016B /* MyCustomSegmentControl.swift in Sources */,
 				8B6661F624F944FF00FE016B /* ViewController.swift in Sources */,
 				8B6661F224F944FF00FE016B /* AppDelegate.swift in Sources */,
 				8B66621124F9461D00FE016B /* MenuCell.swift in Sources */,
 				8B66621724F994A700FE016B /* CustomControlSegment.swift in Sources */,
+				8B66622724FA5BA800FE016B /* RestaurantMenu.swift in Sources */,
 				8B6661F424F944FF00FE016B /* SceneDelegate.swift in Sources */,
 				8B66620D24F945F100FE016B /* MenuListViewController.swift in Sources */,
+				8BC4531624FA47F500D32216 /* MaterialSegmentedControl.swift in Sources */,
 				8B66620F24F945FF00FE016B /* MenuListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

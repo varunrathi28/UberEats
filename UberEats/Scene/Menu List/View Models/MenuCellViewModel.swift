@@ -8,16 +8,21 @@
 import Foundation
 
 struct MenuCellViewModel : ItemViewModel {
-    private let menu: Menu
+    private let menu: MenuItem
+    
+    init(menu: MenuItem) {
+        self.menu = menu
+    }
+    
     var menuNameStr:String {
-        return menu.menuName
+        return menu.dishName
     }
     
     var menuDescStr:String {
-        return menu.menuDesc ?? ""
+        return menu.description
     }
     
     var menuPriceStr : String {
-        return menu.menuPrice ?? ""
+        return menu.priceText
     }
 }

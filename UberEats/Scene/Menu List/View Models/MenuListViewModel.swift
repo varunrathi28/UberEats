@@ -7,46 +7,34 @@
 
 import Foundation
 
- public struct Menu {
-       let menuName:String
-       let menuDesc:String?
-       let menuPrice:String?
-}
-    
-public class RestaurantMenu {
-    struct MenuSection {
-        var menuName:String
-        var items:[Menu]
-    }
-    
-   
-    var menus:[MenuSection]
-    
-    init(_ data:[String:Any]) {
-        menus = []
-    }
-}
-
-
-
-
-enum MenuListActions {
-    
-}
-
-
 protocol RestaurantMenuViewModel:class {
 }
 
-
 class MenuListViewModel : RestaurantMenuViewModel {
     private var menuData:RestaurantMenu
+    
+     init(_ menuData:RestaurantMenu){
+        self.menuData = menuData
+    }
+    
     var numberOfSections:Int {
         return menuData.menus.count
     }
     
-    init(_ menuData:RestaurantMenu){
-        self.menuData = menuData
+    func numberOfRows(section:Int) -> Int {
+        return menuData.menus[section].items.count
     }
+    
+    func cellVieWModel(for indexPath:IndexPath)-> MenuCellViewModel? {
+        if let menuItem = menuData.menuItem(at: indexPath) {
+            return MenuCellViewModel(menu: menuItem)
+        }
+        return nil
+    }
+    
+    func sectionNameFor(_ section:Int) -> String {
+        return menuData.menus[section].sectionName
+    }
+    
     
 }

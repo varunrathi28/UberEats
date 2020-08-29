@@ -1,0 +1,32 @@
+{
+  "menus" : [
+       {"sectionName" : "Indian", "items" :
+       [{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"}, {"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"}]
+       },
+       
+       {"sectionName" : "Indonesian", "items" :
+       [{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"}, {"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"}]
+       },
+       
+       {"sectionName" : "American", "items" :
+       [{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"}, {"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"}]
+       },
+       
+       {"sectionName" : "Korean", "items" :
+       [{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"}, {"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"}]
+       },
+       
+       {"sectionName" : "Chinese", "items" :
+       [{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"}, {"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"}]
+       },
+       
+       {"sectionName" : "Mexican", "items" :
+       [{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"}, {"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"}]
+       }
+       
+       ]
+}
+       
+     
+
+  
