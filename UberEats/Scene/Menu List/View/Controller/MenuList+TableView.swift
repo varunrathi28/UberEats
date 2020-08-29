@@ -44,16 +44,37 @@ extension MenuListViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         print("end \(indexPath)")
          if indexPath.section != currentVisibleSection {
-          //  currentVisibleSection = indexPath.section
+            //    setSelectedSegmentOnScroll(indexPath.section)
         }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-            if scrollView == tableView {
-               if let indexpath = tableView.indexPathsForVisibleRows?.first, indexpath.row == 0 {
-                    setSelectedSegmentOnScroll(indexpath.section)
-               }
+        print("-debug- = \(scrollView.isTracking) \(scrollView.contentOffset)")
+        if scrollView == tableView, isManualScroll {
+            if let indexpath = tableView.indexPathsForVisibleRows?.first, currentVisibleSection != indexpath.section {
+                if lastContentOffset  < scrollView.contentOffset.y {
+                    setSelectedSegmentOnScroll(currentVisibleSection + 1)
+                    }
+                    else if currentVisibleSection > 0{
+                    setSelectedSegmentOnScroll(currentVisibleSection - 1)
+                    }
+                    // move up
             }
+        }
+        self.lastContentOffset = scrollView.contentOffset.y
+    }
+    
+   
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        isManualScroll = true
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        isManualScroll = false
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+            isManualScroll = false
     }
     
    

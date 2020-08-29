@@ -9,18 +9,16 @@ import UIKit
 
 class MenuListViewController: UIViewController {
    @IBOutlet var tableView:UITableView!
-   var segmentControl:UISegmentedControl!
+   @IBOutlet var segmentControl:MyCustomSegmentControl!
    var dynamicSegmentControl:DynamicSegmentControl!
-   @IBOutlet var scrollView : UIScrollView!
    
+   @IBOutlet var scrollView : UIScrollView!
+   var isManualScroll:Bool = false
    var viewModel: MenuListViewModel!
    var data:[[MenuItem]] = []
    var sections:[String] = []
-    var currentVisibleSection:Int = 0 {
-        didSet {
-            setSelectedSegmentOnScroll(currentVisibleSection)
-        }
-    }
+    var currentVisibleSection:Int = 0
+     var lastContentOffset: CGFloat = 0
     
     
 //    init(_ viewModel:MenuListViewModel) {
@@ -40,17 +38,13 @@ class MenuListViewController: UIViewController {
     
     func configureUI(){
         configureTableView()
-        newSegments()
+        setUpSegmentedControl()
     }
     
-    func newSegments(){
-        let frame = CGRect(x: scrollView.frame.origin.x, y: scrollView.frame.origin.y, width: scrollView.frame.width * 2, height: scrollView.frame.height)
-        let newSegments = DynamicSegmentControl(frame:frame)
-        dynamicSegmentControl = newSegments
-        dynamicSegmentControl.addSegments(viewModel.sectionTitles())
-        scrollView.addSubview(dynamicSegmentControl)
-        scrollView.contentSize = frame.size
-        dynamicSegmentControl.segmentClicked = {[weak self] index in
+    func setUpSegmentedControl(){
+        segmentControl.changeSegments(viewModel.sectionTitles())
+        segmentControl.selectedTextColor = .white
+        segmentControl.clickCompletion = {[weak self] index in
             guard let self = self else {
                 return
             }
@@ -82,16 +76,16 @@ class MenuListViewController: UIViewController {
     
     func setSelectedSegmentOnScroll(_ index:Int){
         guard index < viewModel.numberOfSections else { return }
-        dynamicSegmentControl.setSegmentSelected(with: viewModel.sectionTitles()[index]) {
-            print("xxx")
-        }
-            
-    //    segmentedControl.selectedSegmentIndex = index
+        segmentControl.setSegmentSelected(index: index)
+        currentVisibleSection = index
+
     }
     
     func scrollTableView(_ section:Int,animated: Bool = true){
         guard section < viewModel.numberOfSections else { return }
         
+        isManualScroll = false
+        currentVisibleSection = section
         tableView.scrollToRow(at: IndexPath(row:0, section: section), at: .top, animated:animated)
     }
     

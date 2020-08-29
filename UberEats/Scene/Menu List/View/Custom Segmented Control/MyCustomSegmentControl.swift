@@ -8,9 +8,13 @@
 import UIKit
 
 @IBDesignable
-class MyCustomSegmentControl: UIControl {
+class MyCustomSegmentControl: UIView {
     
-    public var selectedSegmentIndex = 0
+    public var selectedSegmentIndex = 0 {
+        didSet{
+            updateSelector()
+        }
+    }
     let interItemSpacing:CGFloat = 20
     
     @IBInspectable
@@ -38,21 +42,19 @@ class MyCustomSegmentControl: UIControl {
     @IBInspectable
     var textColor:UIColor = .lightGray {
         didSet {
-            segments.forEach {
-                $0.setTitleColor(textColor, for: .normal)
-            }
+            updateColors()
         }
     }
     
     @IBInspectable
     var selectorColor: UIColor = .darkGray {
         didSet{
-            selectorView.backgroundColor = selectorColor
+            updateColors()
         }
     }
     
     @IBInspectable
-    var selectedTextColor: UIColor = .darkGray {
+    var selectedTextColor: UIColor = .white {
         didSet{
             updateView()
         }
@@ -65,7 +67,16 @@ class MyCustomSegmentControl: UIControl {
         }
     }
     
+    @IBInspectable
+    var cornerRadius: CGFloat  = 0.0 {
+        didSet{
+            
+        }
+        
+    }
+    
     var segments:[UIButton] = []
+    var clickCompletion:((Int) -> ())?
     
     lazy var scrollView:UIScrollView = {
         let scroll = UIScrollView()
@@ -91,26 +102,27 @@ class MyCustomSegmentControl: UIControl {
                             foregroundColor: UIColor, selectedForegroundColor: UIColor, selectorColor: UIColor, bgColor: UIColor) {
         self.init(frame: frame)
         self.segments = getSegmentButtons(from: titles)
-       // self.selectorStyle = selectorStyle
-       // self.foregroundColor = fgColor
-       // self.selectedForegroundColor = selectedFgColor
         self.selectorColor = selectorColor
         self.backgroundColor = bgColor
-        
         updateView()
         defer {
             self.selectorCornerRadius = cornerRadius
         }
     }
     
+    func changeSegments(_ titles: [String]){
+        self.commaSeparatedTitles = titles.joined(separator:",")
+        updateView()
+    }
+    
     public func appendSegment(_ title:String, textColor: UIColor ){
         let segment = createSegmentButton(title: title)
         segments.append(segment)
+      //  updateView()
     }
     
     
     func updateView(){
-        
         segments.removeAll()
         subviews.forEach { $0.removeFromSuperview() }
         let buttonTitles = commaSeparatedTitles.components(separatedBy:",")
@@ -121,16 +133,13 @@ class MyCustomSegmentControl: UIControl {
             segments[idx].addTarget(self, action: #selector(buttonTapped(button:)), for: .touchUpInside)
             segments[idx].tag = idx
         }
-       
+        
+        setUpSelectorView()
         setUpScrollView()
         setUpStackView()
         //scrollView.contentSize =  CGSize(width: scrollView.frame.width*2, height: scrollView.frame.height)
-        
-        let selectorWidth = frame.width / CGFloat(segments.count)
-        selectorView = UIView(frame: CGRect(x: 0, y: 0, width: selectorWidth, height: frame.height))
-         selectorView.backgroundColor = selectorColor
-        addSubview(selectorView)
-        
+    
+        updateColors()
         layoutIfNeeded()
     }
     
@@ -154,11 +163,20 @@ class MyCustomSegmentControl: UIControl {
          let button = UIButton(type: .system)
             button.setTitle(title, for: .normal)
             button.setTitleColor(self.textColor, for: .normal)
+            button.contentHorizontalAlignment = .center
             return button
     }
 
+    
+    func setUpSelectorView(){
+        let selectorWidth = frame.width / CGFloat(segments.count)
+        selectorView = UIView(frame: CGRect(x: 0, y: 0, width: selectorWidth - 10, height: frame.height))
+        selectorView.backgroundColor = selectorColor
+        addSubview(selectorView)
+    }
+
     func setUpStackView(){
-        stackView = UIStackView(frame: scrollView.frame)
+        stackView = UIStackView(arrangedSubviews: segments)
         
         for item in segments {
             stackView.addSubview(item)
@@ -166,17 +184,16 @@ class MyCustomSegmentControl: UIControl {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.alignment = .fill
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fillProportionally
         stackView.spacing = interItemSpacing
+        addSubview(stackView)
         
-        scrollView.addSubview(stackView)
+        stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        
-        stackView.heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
+       // stackView.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
     }
     
     func setUpScrollView(){
@@ -191,7 +208,8 @@ class MyCustomSegmentControl: UIControl {
     }
     
     override func draw(_ rect: CGRect) {
-        selectorView.layer.cornerRadius = selectorCornerRadius
+        layer.cornerRadius = cornerRadius
+        selectorView.layer.cornerRadius = frame.height/2
     }
     
     open func moveView(_ view: UIView, duration: Double = 0.5, completion: ((Bool) -> Void)? = nil, toX: CGFloat) {
@@ -207,15 +225,43 @@ class MyCustomSegmentControl: UIControl {
     }
     
      @objc func buttonTapped(button: UIButton) {
-        for (idx, btn) in segments.enumerated() {
-            let image = btn.image(for: .normal)
-          
-            if btn.tag == button.tag {
-                selectedSegmentIndex = idx
-            //    moveView(selector, toX: btn.frame.origin.x)
+        
+        selectedSegmentIndex = button.tag
+        updateSelector()
+        clickCompletion?(selectedSegmentIndex)
+        updateColors()
+    }
+    
+    func updateSelector(){
+        guard selectedSegmentIndex < segments.count else  { return }
+        let newOrigin = segments[selectedSegmentIndex].center
+        
+        print("new origin = \(newOrigin), \(selectedSegmentIndex)")
+       // moveView(selectorView, toX: newOrigin.x)
+        UIView.animate(withDuration: 0.3) {
+            self.selectorView.center.x = newOrigin.x
+        }
+        updateColors()
+    }
+    
+    func setSegmentSelected(index:Int){
+        guard  index < segments.count else {
+            return
+        }
+        selectedSegmentIndex = index
+    }
+    
+    func updateColors() {
+        for (index, button) in segments.enumerated() {
+            if index == selectedSegmentIndex {
+                button.setTitleColor(selectedTextColor, for: .normal)
+            }
+            else {
+                 button.setTitleColor(textColor, for: .normal)
             }
         }
-        sendActions(for: .valueChanged)
+        
+        selectorView.backgroundColor = selectorColor
     }
     
 

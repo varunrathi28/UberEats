@@ -10,7 +10,7 @@ import UIKit
 public class DynamicSegmentControl: UISegmentedControl {
 
     var selectedTintColor = UIColor(red: 19/255, green: 59/255, blue: 85/255, alpha: 0.5)
-    var themeBackgroundColor = UIColor.init(red: 52/255, green: 59/255, blue: 85/2551, alpha: 1.0)
+    
     var sortedViews:[UIView]!
     var currentIndex:Int =  0
     var arrTabs:[String] = []
@@ -25,11 +25,14 @@ public class DynamicSegmentControl: UISegmentedControl {
         super.init(frame: frame)
         commonInit()
     }
+
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
+    
+    
     
     func addSegments(_ segments:[String]) {
             arrTabs.append(contentsOf: segments)
@@ -117,7 +120,7 @@ public class DynamicSegmentControl: UISegmentedControl {
        
        let selectedAttributes = [NSAttributedString.Key.foregroundColor : selectedColor]
        let unSelectedAttributes  = [NSAttributedString.Key.foregroundColor : unSelectedColor]
-       
+       self.selectedSegmentIndex = self.currentIndex
        self.setTitleTextAttributes(selectedAttributes, for: .selected)
        self.setTitleTextAttributes(unSelectedAttributes, for: .normal)
         self.addTarget(self, action: #selector(segmentIndexClicked(sender:)), for: .valueChanged)
