@@ -13,6 +13,14 @@
 		8B6661F924F944FF00FE016B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B6661F724F944FF00FE016B /* Main.storyboard */; };
 		8B6661FB24F9450200FE016B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B6661FA24F9450200FE016B /* Assets.xcassets */; };
 		8B6661FE24F9450200FE016B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B6661FC24F9450200FE016B /* LaunchScreen.storyboard */; };
+		8B66620D24F945F100FE016B /* MenuListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66620C24F945F100FE016B /* MenuListViewController.swift */; };
+		8B66620F24F945FF00FE016B /* MenuListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66620E24F945FF00FE016B /* MenuListViewModel.swift */; };
+		8B66621124F9461D00FE016B /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66621024F9461D00FE016B /* MenuCell.swift */; };
+		8B66621524F952FA00FE016B /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66621424F952FA00FE016B /* CustomSegmentedControl.swift */; };
+		8B66621724F994A700FE016B /* CustomControlSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66621624F994A700FE016B /* CustomControlSegment.swift */; };
+		8B66621924F9B0FC00FE016B /* ScrollableSegmentedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66621824F9B0FC00FE016B /* ScrollableSegmentedController.swift */; };
+		8BC4531024FA220600D32216 /* MenuCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4530F24FA220600D32216 /* MenuCellViewModel.swift */; };
+		8BC4531224FA23E100D32216 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4531124FA23E100D32216 /* ItemViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +32,14 @@
 		8B6661FA24F9450200FE016B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B6661FD24F9450200FE016B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B6661FF24F9450200FE016B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B66620C24F945F100FE016B /* MenuListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewController.swift; sourceTree = "<group>"; };
+		8B66620E24F945FF00FE016B /* MenuListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewModel.swift; sourceTree = "<group>"; };
+		8B66621024F9461D00FE016B /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		8B66621424F952FA00FE016B /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		8B66621624F994A700FE016B /* CustomControlSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomControlSegment.swift; sourceTree = "<group>"; };
+		8B66621824F9B0FC00FE016B /* ScrollableSegmentedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableSegmentedController.swift; sourceTree = "<group>"; };
+		8BC4530F24FA220600D32216 /* MenuCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCellViewModel.swift; sourceTree = "<group>"; };
+		8BC4531124FA23E100D32216 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +72,7 @@
 		8B6661F024F944FF00FE016B /* UberEats */ = {
 			isa = PBXGroup;
 			children = (
+				8B66620624F945D600FE016B /* Scene */,
 				8B6661F124F944FF00FE016B /* AppDelegate.swift */,
 				8B6661F324F944FF00FE016B /* SceneDelegate.swift */,
 				8B6661F524F944FF00FE016B /* ViewController.swift */,
@@ -65,6 +82,77 @@
 				8B6661FF24F9450200FE016B /* Info.plist */,
 			);
 			path = UberEats;
+			sourceTree = "<group>";
+		};
+		8B66620624F945D600FE016B /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				8B66620724F945D600FE016B /* Menu List */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		8B66620724F945D600FE016B /* Menu List */ = {
+			isa = PBXGroup;
+			children = (
+				8B66620824F945D600FE016B /* View Models */,
+				8B66620924F945D600FE016B /* Common */,
+				8B66620A24F945D600FE016B /* View */,
+				8B66620B24F945D600FE016B /* Utility */,
+			);
+			path = "Menu List";
+			sourceTree = "<group>";
+		};
+		8B66620824F945D600FE016B /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				8BC4530F24FA220600D32216 /* MenuCellViewModel.swift */,
+				8B66620E24F945FF00FE016B /* MenuListViewModel.swift */,
+				8BC4531124FA23E100D32216 /* ItemViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		8B66620924F945D600FE016B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		8B66620A24F945D600FE016B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8B66621324F952E500FE016B /* Custom Segmented Control */,
+				8B66621224F94D8600FE016B /* Section tile */,
+				8B66620C24F945F100FE016B /* MenuListViewController.swift */,
+				8B66621024F9461D00FE016B /* MenuCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8B66620B24F945D600FE016B /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		8B66621224F94D8600FE016B /* Section tile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Section tile";
+			sourceTree = "<group>";
+		};
+		8B66621324F952E500FE016B /* Custom Segmented Control */ = {
+			isa = PBXGroup;
+			children = (
+				8B66621424F952FA00FE016B /* CustomSegmentedControl.swift */,
+				8B66621624F994A700FE016B /* CustomControlSegment.swift */,
+				8B66621824F9B0FC00FE016B /* ScrollableSegmentedController.swift */,
+			);
+			path = "Custom Segmented Control";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +225,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B66621524F952FA00FE016B /* CustomSegmentedControl.swift in Sources */,
+				8BC4531024FA220600D32216 /* MenuCellViewModel.swift in Sources */,
+				8B66621924F9B0FC00FE016B /* ScrollableSegmentedController.swift in Sources */,
+				8BC4531224FA23E100D32216 /* ItemViewModel.swift in Sources */,
 				8B6661F624F944FF00FE016B /* ViewController.swift in Sources */,
 				8B6661F224F944FF00FE016B /* AppDelegate.swift in Sources */,
+				8B66621124F9461D00FE016B /* MenuCell.swift in Sources */,
+				8B66621724F994A700FE016B /* CustomControlSegment.swift in Sources */,
 				8B6661F424F944FF00FE016B /* SceneDelegate.swift in Sources */,
+				8B66620D24F945F100FE016B /* MenuListViewController.swift in Sources */,
+				8B66620F24F945FF00FE016B /* MenuListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +312,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -271,7 +367,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -286,14 +382,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = Z3QQ492P6Z;
 				INFOPLIST_FILE = UberEats/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vrat28.UberEats;
+				PRODUCT_BUNDLE_IDENTIFIER = com.infoedge.jeevansathi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = JeevansathiDevProfile;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -304,14 +403,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = Z3QQ492P6Z;
 				INFOPLIST_FILE = UberEats/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vrat28.UberEats;
+				PRODUCT_BUNDLE_IDENTIFIER = com.infoedge.jeevansathi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = JeevansathiDevProfile;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
