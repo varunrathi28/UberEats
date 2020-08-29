@@ -254,11 +254,12 @@ class MyCustomSegmentControl: UIView {
         guard  index < segments.count else {
             return
         }
-        updateScrollOffetIfNeed(for: index)
+       // updateScrollOffetIfNeed(for: index)
         selectedSegmentIndex = index
     }
     
     func updateScrollOffetIfNeed(for section:Int){
+        
         let origin = segments[section].frame.origin.x
         if origin > scrollView.contentOffset.x {
             DispatchQueue.main.async {
