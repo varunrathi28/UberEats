@@ -10,13 +10,17 @@ import UIKit
 @IBDesignable
 class MyCustomSegmentControl: UIView {
     
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
     public var selectedSegmentIndex = 0 {
         didSet{
             updateSelector()
         }
     }
     let interItemSpacing:CGFloat = 20
-    
+    let padding:CGFloat = 10.0
     @IBInspectable
     var borderWidth:CGFloat = 0 {
         didSet {
@@ -186,14 +190,14 @@ class MyCustomSegmentControl: UIView {
         stackView.alignment = .fill
         stackView.distribution = .fillProportionally
         stackView.spacing = interItemSpacing
-        addSubview(stackView)
+        scrollView.addSubview(stackView)
         
-        stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo:scrollView.topAnchor).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         
-       // stackView.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
+        stackView.heightAnchor.constraint(equalTo:scrollView.heightAnchor).isActive = true
     }
     
     func setUpScrollView(){
@@ -203,8 +207,7 @@ class MyCustomSegmentControl: UIView {
         scrollView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-//        scrollView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-//        scrollView.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
+        scrollView.showsHorizontalScrollIndicator = false
     }
     
     override func draw(_ rect: CGRect) {
@@ -234,12 +237,15 @@ class MyCustomSegmentControl: UIView {
     
     func updateSelector(){
         guard selectedSegmentIndex < segments.count else  { return }
-        let newOrigin = segments[selectedSegmentIndex].center
+        let newViewToOverlap = segments[selectedSegmentIndex]
+        let newCenter = newViewToOverlap.center.x
+        let newWidth = newViewToOverlap.frame.width + 2 * padding
+        let newSelectorSize = CGSize(width: newWidth, height: selectorView.frame.height)
         
-        print("new origin = \(newOrigin), \(selectedSegmentIndex)")
        // moveView(selectorView, toX: newOrigin.x)
         UIView.animate(withDuration: 0.3) {
-            self.selectorView.center.x = newOrigin.x
+            self.selectorView.frame.size = newSelectorSize
+            self.selectorView.center.x = newCenter
         }
         updateColors()
     }
@@ -248,7 +254,18 @@ class MyCustomSegmentControl: UIView {
         guard  index < segments.count else {
             return
         }
+        updateScrollOffetIfNeed(for: index)
         selectedSegmentIndex = index
+    }
+    
+    func updateScrollOffetIfNeed(for section:Int){
+        let origin = segments[section].frame.origin.x
+        if origin > scrollView.contentOffset.x {
+            DispatchQueue.main.async {
+                let point = CGPoint(x: origin - self.scrollView.contentOffset.x, y: 0)
+                self.scrollView.setContentOffset(point, animated: true)
+            }
+        }
     }
     
     func updateColors() {
