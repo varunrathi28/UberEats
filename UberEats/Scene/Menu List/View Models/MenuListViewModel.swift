@@ -36,5 +36,12 @@ class MenuListViewModel : RestaurantMenuViewModel {
         return menuData.menus[section].sectionName
     }
     
+    func sectionTitles() -> [String]{
+        let titles = menuData.menus.map {
+            $0.sectionName
+        }
+        return titles
+    }
+    
     
 }
