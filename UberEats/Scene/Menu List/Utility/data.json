@@ -20,7 +20,7 @@
        [{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"}, {"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"}]
        },
        
-       {"sectionName" : "Mexican", "items" :
+       {"sectionName" : "Mexican speical dish", "items" :
        [{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"}, {"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"Pineapple, Mayo, mustard, tomatoes, pickles and onions", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"},{"dishName" : "Dish1","description":"This is a random restaurant", "priceText": "$56.7"}]
        }
        

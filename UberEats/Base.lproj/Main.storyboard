@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="CTR-FY-BkV">
-                                <rect key="frame" x="0.0" y="165" width="414" height="697"/>
+                                <rect key="frame" x="0.0" y="124" width="414" height="738"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuCell" rowHeight="132" id="RuD-9V-21D" customClass="MenuCell" customModule="UberEats" customModuleProvider="target">
@@ -83,30 +83,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGm-XU-3vx" customClass="MyCustomSegmentControl" customModule="UberEats" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="414" height="61"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="61" id="a8I-tN-YBK"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="commaSeparatedTitles" value="One,Two,Three,Four, Five, Six"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                        <color key="value" systemColor="linkColor"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTextColor">
-                                        <color key="value" systemColor="systemGreenColor"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="selectorCornerRadius">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="selectorColor">
-                                        <color key="value" systemColor="systemIndigoColor"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iQ-wc-FAC">
-                                <rect key="frame" x="20" y="105" width="374" height="60"/>
+                                <rect key="frame" x="20" y="136" width="374" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="8IY-hB-btG"/>
                                 </constraints>
@@ -118,12 +96,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="2iQ-wc-FAC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5zg-fg-yNh"/>
-                            <constraint firstItem="YGm-XU-3vx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7mk-kw-M9k"/>
-                            <constraint firstItem="YGm-XU-3vx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Nlv-Ft-cLg"/>
-                            <constraint firstItem="2iQ-wc-FAC" firstAttribute="top" secondItem="YGm-XU-3vx" secondAttribute="bottom" id="Rgx-JW-VSl"/>
+                            <constraint firstItem="2iQ-wc-FAC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="KLe-ep-2pm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CTR-FY-BkV" secondAttribute="trailing" id="dah-HZ-uhD"/>
                             <constraint firstItem="CTR-FY-BkV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eDQ-xq-imm"/>
-                            <constraint firstItem="YGm-XU-3vx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="iZL-Bq-BuA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2iQ-wc-FAC" secondAttribute="trailing" id="kiX-1R-Agz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CTR-FY-BkV" secondAttribute="bottom" id="ngu-Fx-Sht"/>
                             <constraint firstItem="CTR-FY-BkV" firstAttribute="top" secondItem="2iQ-wc-FAC" secondAttribute="bottom" id="zW3-rA-g18"/>
@@ -141,17 +116,8 @@
     </scenes>
     <resources>
         <image name="menuitem" width="800" height="637"/>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
