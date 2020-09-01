@@ -12,6 +12,8 @@ class MenuListViewController: UIViewController {
    @IBOutlet var segmentControl:MyCustomSegmentControl!
    var dynamicSegmentControl:DynamicSegmentControl!
    
+   @IBOutlet weak var collectionView:UICollectionView!
+   
    @IBOutlet var scrollView : UIScrollView!
    var isManualScroll:Bool = false
    var viewModel: MenuListViewModel!
@@ -19,6 +21,14 @@ class MenuListViewController: UIViewController {
    var sections:[String] = []
     var currentVisibleSection:Int = 0
     var lastContentOffset: CGFloat = 0
+    var selectedView:UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.red
+        view.layer.cornerRadius = view.frame.height/2
+        view.clipsToBounds = true
+        return view
+    }()
     
     
 //    init(_ viewModel:MenuListViewModel) {
@@ -30,6 +40,22 @@ class MenuListViewController: UIViewController {
         fillData()
         configureUI()
         registerHeader()
+        
+        collectionView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    addSelectedView()
+     
+    // collectionView.layer.mask = selectedView.layer
+}
+    func addSelectedView(){
+
+        selectedView.layer.cornerRadius = selectedView.frame.height/2
+        collectionView.addSubview(selectedView)
+     //   collectionView.insertSubview(selectedView, at: 0)
+        moveSelectedView(to: 0)
     }
     
     func registerHeader(){
@@ -76,6 +102,7 @@ class MenuListViewController: UIViewController {
         guard index < viewModel.numberOfSections else { return }
         segmentControl.setSegmentSelected(index: index)
         currentVisibleSection = index
+        collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .right, animated: true)
 
     }
     

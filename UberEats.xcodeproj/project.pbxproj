@@ -23,6 +23,9 @@
 		8B66622524FA5B7D00FE016B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66622424FA5B7D00FE016B /* Item.swift */; };
 		8B66622724FA5BA800FE016B /* RestaurantMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66622624FA5BA800FE016B /* RestaurantMenu.swift */; };
 		8B66623124FA6FF100FE016B /* DynamicSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66623024FA6FF100FE016B /* DynamicSegmentControl.swift */; };
+		8B6B94B624FE77BC006EC9AD /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B94B524FE77BC006EC9AD /* CustomCollectionView.swift */; };
+		8B6B94B824FE7A92006EC9AD /* CustomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B94B724FE7A92006EC9AD /* CustomCollectionCell.swift */; };
+		8B6B94BA24FE7B6F006EC9AD /* MenuList+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B94B924FE7B6F006EC9AD /* MenuList+CollectionView.swift */; };
 		8BC4531024FA220600D32216 /* MenuCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4530F24FA220600D32216 /* MenuCellViewModel.swift */; };
 		8BC4531224FA23E100D32216 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4531124FA23E100D32216 /* ItemViewModel.swift */; };
 		8BC4531424FA250E00D32216 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BC4531324FA250E00D32216 /* data.json */; };
@@ -47,6 +50,9 @@
 		8B66622424FA5B7D00FE016B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		8B66622624FA5BA800FE016B /* RestaurantMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMenu.swift; sourceTree = "<group>"; };
 		8B66623024FA6FF100FE016B /* DynamicSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicSegmentControl.swift; sourceTree = "<group>"; };
+		8B6B94B524FE77BC006EC9AD /* CustomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
+		8B6B94B724FE7A92006EC9AD /* CustomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionCell.swift; sourceTree = "<group>"; };
+		8B6B94B924FE7B6F006EC9AD /* MenuList+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuList+CollectionView.swift"; sourceTree = "<group>"; };
 		8BC4530F24FA220600D32216 /* MenuCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCellViewModel.swift; sourceTree = "<group>"; };
 		8BC4531124FA23E100D32216 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 		8BC4531324FA250E00D32216 /* data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
@@ -138,6 +144,7 @@
 				8B66622924FA64F100FE016B /* Controller */,
 				8B66621C24FA28DD00FE016B /* Header */,
 				8B66621324F952E500FE016B /* Custom Segmented Control */,
+				8B6B94B524FE77BC006EC9AD /* CustomCollectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -155,6 +162,7 @@
 			children = (
 				8B66622124FA302D00FE016B /* MyCustomSegmentControl.swift */,
 				8B66623024FA6FF100FE016B /* DynamicSegmentControl.swift */,
+				8B6B94B724FE7A92006EC9AD /* CustomCollectionCell.swift */,
 			);
 			path = "Custom Segmented Control";
 			sourceTree = "<group>";
@@ -190,6 +198,7 @@
 			children = (
 				8B66620C24F945F100FE016B /* MenuListViewController.swift */,
 				8B66621A24FA273900FE016B /* MenuList+TableView.swift */,
+				8B6B94B924FE7B6F006EC9AD /* MenuList+CollectionView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -266,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B6B94B624FE77BC006EC9AD /* CustomCollectionView.swift in Sources */,
 				8BC4531024FA220600D32216 /* MenuCellViewModel.swift in Sources */,
 				8B66623124FA6FF100FE016B /* DynamicSegmentControl.swift in Sources */,
 				8B66622024FA293200FE016B /* SectionHeaderView.swift in Sources */,
@@ -277,7 +287,9 @@
 				8B6661F224F944FF00FE016B /* AppDelegate.swift in Sources */,
 				8B66621124F9461D00FE016B /* MenuCell.swift in Sources */,
 				8B66622724FA5BA800FE016B /* RestaurantMenu.swift in Sources */,
+				8B6B94B824FE7A92006EC9AD /* CustomCollectionCell.swift in Sources */,
 				8B6661F424F944FF00FE016B /* SceneDelegate.swift in Sources */,
+				8B6B94BA24FE7B6F006EC9AD /* MenuList+CollectionView.swift in Sources */,
 				8B66620D24F945F100FE016B /* MenuListViewController.swift in Sources */,
 				8B66620F24F945FF00FE016B /* MenuListViewModel.swift in Sources */,
 			);
