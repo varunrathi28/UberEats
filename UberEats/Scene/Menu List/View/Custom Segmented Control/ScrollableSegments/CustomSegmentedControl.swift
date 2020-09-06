@@ -285,9 +285,9 @@ import UIKit
         setIndex(nearestIndex(toPoint: location))
         updateContentOffset()
     }
-    
-    func updateContentOffset(){
-        let selectedSegmentStartX = self.segmentOffset[selectedSegmentIndex]
+        
+    func updateContentOffset(_ index:Int){
+        let selectedSegmentStartX = self.segmentOffset[index]
         var contentOffset = scrollView.contentOffset
         if scrollView.contentSize.width - scrollView.frame.size.width > selectedSegmentStartX {
             contentOffset.x = selectedSegmentStartX
@@ -315,10 +315,10 @@ import UIKit
     
     //MARK:- Helpers
     private func elementFrame(forIndex index: Int) -> CGRect {
-        let elementWidth = self.segments[index].contentWidth + segmentInset
+        let elementWidth = self.segments[index].contentWidth + 2 * segmentInset
         var totalOffset:CGFloat = 0
         for i in 0..<index {
-            totalOffset += self.segments[i].contentWidth
+            totalOffset += self.segments[i].contentWidth + 2 * segmentInset
         }
         let x = totalOffset
         return CGRect(x: x, y: indicatorViewInset, width: elementWidth, height: height)
