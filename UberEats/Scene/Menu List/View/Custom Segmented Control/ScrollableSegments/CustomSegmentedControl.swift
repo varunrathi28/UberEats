@@ -13,7 +13,14 @@ import UIKit
     private var panGestureRecognizer: UIPanGestureRecognizer!
     private var initialIndicatorViewFrame: CGRect?
     public let indicatorView = IndicatorThumbView()
-    private var scrollView =  UIScrollView()
+    private var scrollView : UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        return scrollView
+    }()
     private let normalSegmentsView = UIView()
     private let selectedSegmentsView = UIView()
     private var width: CGFloat { return bounds.width }
@@ -154,19 +161,9 @@ import UIKit
         normalSegmentsView.clipsToBounds = true
         selectedSegmentsView.clipsToBounds = true
         
-        scrollView = UIScrollView(frame: self.frame)
+        scrollView.frame = self.frame
         addSubview(scrollView)
-        scrollView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        scrollView.contentSize = CGSize(width: 500, height: 50)
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        scrollView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        scrollView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        scrollView.showsHorizontalScrollIndicator = false
-        
-        
-        let stackView = UIStackView(arrangedSubviews: normalSegments)
+        addBorderConstraints(for: scrollView, with: self)
         
         scrollView.addSubview(normalSegmentsView)
         scrollView.addSubview(indicatorView)
@@ -286,7 +283,7 @@ import UIKit
         updateContentOffset(selectedSegmentIndex)
     }
     
-    public func setSegmentSelected(newIndex index:Int, animated: Bool) {
+    public func setSegmentSelected(newIndex index:Int, animated: Bool = true) {
         setIndex(index, animation: animated)
         updateContentOffset(index)
     }
@@ -300,7 +297,6 @@ import UIKit
                 self.scrollView.setContentOffset(contentOffset, animated: true)
             }
         }
-       
     }
     
     @objc private func panned(_ gestureRecognizer: UIPanGestureRecognizer!) {
@@ -329,5 +325,11 @@ import UIKit
         return CGRect(x: x, y: indicatorViewInset, width: elementWidth, height: height)
     }
     
+    private func addBorderConstraints(for view:UIView,with superView:UIView){
+        view.topAnchor.constraint(equalTo: superView.topAnchor).isActive = true
+        view.leftAnchor.constraint(equalTo: superView.leftAnchor).isActive = true
+        view.rightAnchor.constraint(equalTo: superView.rightAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: superView.bottomAnchor).isActive = true
+    }
 }
 
