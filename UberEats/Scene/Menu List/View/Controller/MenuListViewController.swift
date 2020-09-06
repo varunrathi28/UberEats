@@ -8,15 +8,13 @@
 import UIKit
 
 class MenuListViewController: UIViewController {
-   @IBOutlet var tableView:UITableView!
-   @IBOutlet var segmentControl:MyCustomSegmentControl!
-  
-
-   @IBOutlet var scrollView : UIScrollView!
-   var isManualScroll:Bool = false
-   var viewModel: MenuListViewModel!
-   var data:[[MenuItem]] = []
-   var sections:[String] = []
+    @IBOutlet var tableView:UITableView!
+    var segmentView:CustomSegmentedControl!
+    @IBOutlet var segmentContainerView:UIView!
+    var isManualScroll:Bool = false
+    var viewModel: MenuListViewModel!
+    var data:[[MenuItem]] = []
+    var sections:[String] = []
     var currentVisibleSection:Int = 0
     var lastContentOffset: CGFloat = 0
     var selectedView:UIView = {
@@ -29,29 +27,15 @@ class MenuListViewController: UIViewController {
     }()
     
     
-//    init(_ viewModel:MenuListViewModel) {
-//        self.viewModel = viewModel
-//    }
-//
+    //    init(_ viewModel:MenuListViewModel) {
+    //        self.viewModel = viewModel
+    //    }
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         fillData()
         configureUI()
         registerHeader()
-        addSegments()
-        
-       
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-
-}
-
-     func addSegments(){
-        let viewControl = CustomSegmentedControl(frame: CGRect(x: 0.0, y: 0.0, width: view.bounds.width, height: 40.0), segments: CustomLabelSegment.getSegments(with: ["Indian Food","Chinese Food ","Mexican","Italian","Indian","AASD","American Food menu","Zomato special menu","asdasdas","asdasdasdasd"], textColor: .black, backgroundColor: UIColor.black, selectedTextColor: UIColor.white, selectedBackgroundColor: UIColor.black, font: UIFont.systemFont(ofSize: 16)), defaultIndex: 0,options: [.selectorBackgroundColor(UIColor.white),.cornerRadius(20.0)])
-
-        view.addSubview(viewControl)
     }
     
     func registerHeader(){
@@ -64,24 +48,18 @@ class MenuListViewController: UIViewController {
     }
     
     func setUpSegmentedControl(){
-        segmentControl.changeSegments(viewModel.sectionTitles())
-        segmentControl.selectedTextColor = .white
-        segmentControl.clickCompletion = {[weak self] index in
-            guard let self = self else {
-                return
-            }
-            self.scrollTableView(index)
-        }
+        segmentView = CustomSegmentedControl(frame:CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50), segments: CustomLabelSegment.getSegments(with:viewModel.sectionTitles(), textColor: .black, backgroundColor: .white, selectedTextColor: UIColor.white, selectedBackgroundColor: .black, font: UIFont.systemFont(ofSize: 16)), defaultIndex: 0,options: [.selectorBackgroundColor(UIColor.white),.cornerRadius(25.0)])
+        segmentContainerView.addSubview(segmentView)
+        segmentView.addTarget(self, action: #selector(indexChanged(_:)), for: .valueChanged)
     }
     
-    /*
-    func configureSegmentedSections(){
-        let frame = CGRect(x: 0, y: 0, width: 700, height: 60)
-        let sc = MyCustomSegmentControl(frame:frame, titles: ["1","2","3","4","5","6"], cornerRadius: 5.0, foregroundColor: .blue, selectedForegroundColor: .black, selectorColor: .darkGray, bgColor: .cyan)
-        
-        view.addSubview(sc)
+    @objc func indexChanged(_ sender: CustomSegmentedControl) {
+        guard currentVisibleSection != sender.selectedSegmentIndex else {
+            return
+        }
+       scrollTableView(sender.selectedSegmentIndex)
     }
-    */
+    
     
     func configureTableView(){
         tableView.delegate = self
@@ -96,7 +74,7 @@ class MenuListViewController: UIViewController {
     
     func setSelectedSegmentOnScroll(_ index:Int){
         guard index < viewModel.numberOfSections else { return }
-        segmentControl.setSegmentSelected(index: index)
+        segmentView.setSegmentSelected(newIndex: index)
         currentVisibleSection = index
     }
     

@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="CTR-FY-BkV">
-                                <rect key="frame" x="0.0" y="170" width="414" height="692"/>
+                                <rect key="frame" x="0.0" y="168" width="414" height="694"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuCell" rowHeight="132" id="RuD-9V-21D" customClass="MenuCell" customModule="UberEats" customModuleProvider="target">
@@ -83,40 +83,28 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMg-uK-VRO" customClass="MyCustomSegmentControl" customModule="UberEats" customModuleProvider="target">
-                                <rect key="frame" x="10" y="100" width="404" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IHB-Qg-zbD">
+                                <rect key="frame" x="0.0" y="108" width="414" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="5yw-ew-TnL"/>
+                                    <constraint firstAttribute="height" constant="50" id="lBX-4P-QnU"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="selectorColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTextColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jMg-uK-VRO" secondAttribute="trailing" id="1KR-gq-4sU"/>
-                            <constraint firstAttribute="trailing" secondItem="jMg-uK-VRO" secondAttribute="trailing" id="1ZH-58-yE5"/>
-                            <constraint firstItem="jMg-uK-VRO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="100" id="6oj-Xj-6V2"/>
-                            <constraint firstItem="jMg-uK-VRO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="IZc-Z4-sL7"/>
-                            <constraint firstItem="CTR-FY-BkV" firstAttribute="top" secondItem="jMg-uK-VRO" secondAttribute="bottom" constant="20" id="ZH4-nD-fb5"/>
+                            <constraint firstItem="IHB-Qg-zbD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="64" id="1OC-zB-v3e"/>
+                            <constraint firstItem="IHB-Qg-zbD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8dz-Cn-wfo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IHB-Qg-zbD" secondAttribute="trailing" id="Okb-O1-Rha"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CTR-FY-BkV" secondAttribute="trailing" id="dah-HZ-uhD"/>
                             <constraint firstItem="CTR-FY-BkV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eDQ-xq-imm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CTR-FY-BkV" secondAttribute="bottom" id="ngu-Fx-Sht"/>
+                            <constraint firstItem="CTR-FY-BkV" firstAttribute="top" secondItem="IHB-Qg-zbD" secondAttribute="bottom" constant="10" id="pAF-Aa-5Pe"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="segmentControl" destination="jMg-uK-VRO" id="Bra-HQ-rVZ"/>
+                        <outlet property="segmentContainerView" destination="IHB-Qg-zbD" id="ZKG-Gq-izd"/>
                         <outlet property="tableView" destination="CTR-FY-BkV" id="xvi-cf-QaY"/>
                     </connections>
                 </viewController>
