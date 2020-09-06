@@ -8,9 +8,38 @@
 import UIKit
 
 @IBDesignable open class CustomSegmentedControl : UIControl, UIGestureRecognizerDelegate {
+    //MARK:- Properties
+    // Accessible property to find the selected index (for value changed events)
     public private(set) var selectedSegmentIndex: Int
+    private var width: CGFloat { return bounds.width }
+    private var height: CGFloat { return bounds.height }
     private var tapGestureRecognizer: UITapGestureRecognizer!
     private var panGestureRecognizer: UIPanGestureRecognizer!
+     private var normalSegmentsCount :Int {
+        return normalSegmentsView.subviews.count
+    }
+    private var segmentInset:CGFloat = 10.0
+    
+   /*
+        Caching Left Offsets for segments.
+        Usefull for scrolling to any segments by setting the contentOffset.x value
+        Index 0 = 0 offset
+        Index 1 = Width of first segment
+        Index N = Sum of Width of first N-1 segments
+     */
+    var segmentOffset:[CGFloat] = []
+    
+     private var contentPadding:CGFloat = 20.0
+    
+    var totalContentWidth:CGFloat {
+        didSet{
+            scrollView.contentSize = CGSize(width: totalContentWidth + contentPadding, height: 0)
+            print("content width = \(totalContentWidth)")
+        }
+    }
+    
+    //MARK: Views
+
     private var initialIndicatorViewFrame: CGRect?
     public let indicatorView = IndicatorThumbView()
     private var scrollView : UIScrollView = {
@@ -23,15 +52,6 @@ import UIKit
     }()
     private let normalSegmentsView = UIView()
     private let selectedSegmentsView = UIView()
-    private var width: CGFloat { return bounds.width }
-    private var height: CGFloat { return bounds.height }
-    private var normalSegmentsCount :Int {
-        return normalSegmentsView.subviews.count
-    }
-    private var segmentInset:CGFloat = 10.0
-    
-    var segmentOffset:[CGFloat] = []
-    
     private var normalSegments: [UIView] {
         return normalSegmentsView.subviews
     }
@@ -46,7 +66,7 @@ import UIKit
         return segments.endIndex - 1
     }
     
-    var totalContentWidth:CGFloat
+    // storing the segment encapsulation
     
     var segments : [CustomMaskSegment] {
         didSet  {
@@ -91,6 +111,8 @@ import UIKit
         }
     }
     
+    //MARK:- Designable properties
+    
     @IBInspectable public var animationDuration: TimeInterval = 1.0
     @IBInspectable public var animationSpringDamping: CGFloat = 0.75
     @IBInspectable public var announcesValueImmediately: Bool = true
@@ -132,6 +154,8 @@ import UIKit
         }
     }
     
+    //MARK:- Initializers
+    
     public init(frame:CGRect, segments:[CustomMaskSegment],defaultIndex: Int = 0, options:[SegmentControlOptions]? = nil) {
         self.selectedSegmentIndex = defaultIndex
         self.segments = segments
@@ -149,7 +173,7 @@ import UIKit
         super.init(coder: coder)
         commonInit()
     }
-    
+    //MARK: Common Init
     // Setting UP the View Hierarchy
     /****  Order is important
      1. Normal View
@@ -169,13 +193,8 @@ import UIKit
         scrollView.addSubview(indicatorView)
         scrollView.addSubview(selectedSegmentsView)
         selectedSegmentsView.layer.mask = indicatorView.segmentMaskView.layer
-        
-        
         tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped(_:)))
         addGestureRecognizer(tapGestureRecognizer)
-        panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panned(_:)))
-        panGestureRecognizer.delegate = self
-        addGestureRecognizer(panGestureRecognizer)
         guard segments.count > 1 else {
             return
         }
@@ -191,13 +210,10 @@ import UIKit
             segment.selectedView.clipsToBounds = true
             selectedSegmentsView.addSubview(segment.selectedView)
             segmentOffset.append(totalContentSize)
-            totalContentSize += segment.contentWidth
+            totalContentSize += segment.contentWidth + 2*segmentInset
         }
         
         self.totalContentWidth = totalContentSize
-        var contentSize = scrollView.contentSize
-        contentSize.width = totalContentSize
-        scrollView.contentSize = CGSize(width: 500, height: 50)
         layoutIfNeeded()
     }
     
@@ -206,11 +222,14 @@ import UIKit
         guard normalSegmentsCount > 1 else {
             return
         }
-//        var frame = bounds
-//        frame.width = tot
 
         var frame = bounds
-        frame.size.width = scrollView.contentSize.width
+        if let lastSegmentOffset = segmentOffset.last, let lastSegment = self.segments.last {
+            let totalContentSize = lastSegmentOffset + lastSegment.contentWidth + 2*segmentInset
+             frame.size.width = totalContentSize
+             scrollView.contentSize = CGSize(width: totalContentSize, height: 0)
+        }
+        
         normalSegmentsView.frame = frame
         selectedSegmentsView.frame = frame
         indicatorView.frame = elementFrame(forIndex: selectedSegmentIndex)
@@ -233,6 +252,7 @@ import UIKit
         moveIndicatorView(animation, shouldSendEvent: oldIndex != newIndex || announcesValueImmediately)
     }
     
+    //MARK:- Animation
     
     private func moveIndicatorView(_ animated: Bool, shouldSendEvent: Bool) {
         if animated{
@@ -240,7 +260,7 @@ import UIKit
                 sendActions(for: .valueChanged)
             }
             
-            UIView.animate(withDuration: animationDuration,
+        UIView.animate(withDuration: animationDuration,
                            delay: 0.0,
                            usingSpringWithDamping: animationSpringDamping,
                            initialSpringVelocity: 0.0,
@@ -255,7 +275,6 @@ import UIKit
         }
         else {
             moveIndicatorView()
-            
             if shouldSendEvent {
                 sendActions(for: .valueChanged)
             }
@@ -283,7 +302,11 @@ import UIKit
         updateContentOffset(selectedSegmentIndex)
     }
     
+    // exposed func to select any section
     public func setSegmentSelected(newIndex index:Int, animated: Bool = true) {
+        guard index < segments.count else {
+            return
+        }
         setIndex(index, animation: animated)
         updateContentOffset(index)
     }
@@ -291,9 +314,15 @@ import UIKit
     private func updateContentOffset(_ index:Int){
         let selectedSegmentStartX = self.segmentOffset[index]
         var contentOffset = scrollView.contentOffset
-        if scrollView.contentSize.width - scrollView.frame.size.width > selectedSegmentStartX {
+        if totalContentWidth - scrollView.frame.size.width > selectedSegmentStartX {
             contentOffset.x = selectedSegmentStartX
             DispatchQueue.main.async {
+                self.scrollView.setContentOffset(contentOffset, animated: true)
+            }
+        }
+        else{
+            contentOffset.x = totalContentWidth - scrollView.frame.size.width
+             DispatchQueue.main.async {
                 self.scrollView.setContentOffset(contentOffset, animated: true)
             }
         }
@@ -312,6 +341,11 @@ import UIKit
             setIndex(nearestIndex(toPoint: indicatorView.center))
         default: break
         }
+    }
+    
+    open override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        indicatorView.layer.cornerRadius = self.cornerRadius
     }
     
     //MARK:- Helpers
