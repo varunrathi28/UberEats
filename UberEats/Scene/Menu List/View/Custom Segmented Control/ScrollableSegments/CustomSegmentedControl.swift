@@ -156,7 +156,7 @@ import UIKit
         
         scrollView = UIScrollView(frame: self.frame)
         addSubview(scrollView)
-       
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         scrollView.contentSize = CGSize(width: 500, height: 50)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.topAnchor.constraint(equalTo: topAnchor).isActive = true
@@ -283,10 +283,15 @@ import UIKit
     @objc private func tapped(_ gestureRecognizer: UITapGestureRecognizer!) {
         let location = gestureRecognizer.location(in: scrollView)
         setIndex(nearestIndex(toPoint: location))
-        updateContentOffset()
+        updateContentOffset(selectedSegmentIndex)
+    }
+    
+    public func setSegmentSelected(newIndex index:Int, animated: Bool) {
+        setIndex(index, animation: animated)
+        updateContentOffset(index)
     }
         
-    func updateContentOffset(_ index:Int){
+    private func updateContentOffset(_ index:Int){
         let selectedSegmentStartX = self.segmentOffset[index]
         var contentOffset = scrollView.contentOffset
         if scrollView.contentSize.width - scrollView.frame.size.width > selectedSegmentStartX {
