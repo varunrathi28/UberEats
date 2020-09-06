@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B15540C2504F35300C42727 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B15540B2504F35300C42727 /* CustomSegmentedControl.swift */; };
+		8B15540E2504F37800C42727 /* LabelSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B15540D2504F37800C42727 /* LabelSegment.swift */; };
+		8B1554102504F39000C42727 /* CustomSegmentControlOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B15540F2504F39000C42727 /* CustomSegmentControlOptions.swift */; };
+		8B1554122504F3B100C42727 /* SegmentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1554112504F3B100C42727 /* SegmentProtocol.swift */; };
+		8B1554142504F3D600C42727 /* ThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1554132504F3D600C42727 /* ThumbView.swift */; };
 		8B6661F224F944FF00FE016B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6661F124F944FF00FE016B /* AppDelegate.swift */; };
 		8B6661F424F944FF00FE016B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6661F324F944FF00FE016B /* SceneDelegate.swift */; };
 		8B6661F624F944FF00FE016B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6661F524F944FF00FE016B /* ViewController.swift */; };
@@ -22,16 +27,17 @@
 		8B66622224FA302D00FE016B /* MyCustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66622124FA302D00FE016B /* MyCustomSegmentControl.swift */; };
 		8B66622524FA5B7D00FE016B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66622424FA5B7D00FE016B /* Item.swift */; };
 		8B66622724FA5BA800FE016B /* RestaurantMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66622624FA5BA800FE016B /* RestaurantMenu.swift */; };
-		8B66623124FA6FF100FE016B /* DynamicSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66623024FA6FF100FE016B /* DynamicSegmentControl.swift */; };
-		8B6B94B624FE77BC006EC9AD /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B94B524FE77BC006EC9AD /* CustomCollectionView.swift */; };
-		8B6B94B824FE7A92006EC9AD /* CustomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B94B724FE7A92006EC9AD /* CustomCollectionCell.swift */; };
-		8B6B94BA24FE7B6F006EC9AD /* MenuList+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B94B924FE7B6F006EC9AD /* MenuList+CollectionView.swift */; };
 		8BC4531024FA220600D32216 /* MenuCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4530F24FA220600D32216 /* MenuCellViewModel.swift */; };
 		8BC4531224FA23E100D32216 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4531124FA23E100D32216 /* ItemViewModel.swift */; };
 		8BC4531424FA250E00D32216 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BC4531324FA250E00D32216 /* data.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B15540B2504F35300C42727 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		8B15540D2504F37800C42727 /* LabelSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelSegment.swift; sourceTree = "<group>"; };
+		8B15540F2504F39000C42727 /* CustomSegmentControlOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentControlOptions.swift; sourceTree = "<group>"; };
+		8B1554112504F3B100C42727 /* SegmentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentProtocol.swift; sourceTree = "<group>"; };
+		8B1554132504F3D600C42727 /* ThumbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbView.swift; sourceTree = "<group>"; };
 		8B6661EE24F944FF00FE016B /* UberEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UberEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B6661F124F944FF00FE016B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B6661F324F944FF00FE016B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,10 +55,6 @@
 		8B66622124FA302D00FE016B /* MyCustomSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomSegmentControl.swift; sourceTree = "<group>"; };
 		8B66622424FA5B7D00FE016B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		8B66622624FA5BA800FE016B /* RestaurantMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMenu.swift; sourceTree = "<group>"; };
-		8B66623024FA6FF100FE016B /* DynamicSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicSegmentControl.swift; sourceTree = "<group>"; };
-		8B6B94B524FE77BC006EC9AD /* CustomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
-		8B6B94B724FE7A92006EC9AD /* CustomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionCell.swift; sourceTree = "<group>"; };
-		8B6B94B924FE7B6F006EC9AD /* MenuList+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuList+CollectionView.swift"; sourceTree = "<group>"; };
 		8BC4530F24FA220600D32216 /* MenuCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCellViewModel.swift; sourceTree = "<group>"; };
 		8BC4531124FA23E100D32216 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 		8BC4531324FA250E00D32216 /* data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
@@ -69,6 +71,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B15540A2504F33800C42727 /* ScrollableSegments */ = {
+			isa = PBXGroup;
+			children = (
+				8B15540B2504F35300C42727 /* CustomSegmentedControl.swift */,
+				8B15540D2504F37800C42727 /* LabelSegment.swift */,
+				8B15540F2504F39000C42727 /* CustomSegmentControlOptions.swift */,
+				8B1554112504F3B100C42727 /* SegmentProtocol.swift */,
+				8B1554132504F3D600C42727 /* ThumbView.swift */,
+			);
+			path = ScrollableSegments;
+			sourceTree = "<group>";
+		};
 		8B6661E524F944FF00FE016B = {
 			isa = PBXGroup;
 			children = (
@@ -144,7 +158,6 @@
 				8B66622924FA64F100FE016B /* Controller */,
 				8B66621C24FA28DD00FE016B /* Header */,
 				8B66621324F952E500FE016B /* Custom Segmented Control */,
-				8B6B94B524FE77BC006EC9AD /* CustomCollectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -160,9 +173,8 @@
 		8B66621324F952E500FE016B /* Custom Segmented Control */ = {
 			isa = PBXGroup;
 			children = (
+				8B15540A2504F33800C42727 /* ScrollableSegments */,
 				8B66622124FA302D00FE016B /* MyCustomSegmentControl.swift */,
-				8B66623024FA6FF100FE016B /* DynamicSegmentControl.swift */,
-				8B6B94B724FE7A92006EC9AD /* CustomCollectionCell.swift */,
 			);
 			path = "Custom Segmented Control";
 			sourceTree = "<group>";
@@ -198,7 +210,6 @@
 			children = (
 				8B66620C24F945F100FE016B /* MenuListViewController.swift */,
 				8B66621A24FA273900FE016B /* MenuList+TableView.swift */,
-				8B6B94B924FE7B6F006EC9AD /* MenuList+CollectionView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -275,21 +286,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B6B94B624FE77BC006EC9AD /* CustomCollectionView.swift in Sources */,
+				8B15540E2504F37800C42727 /* LabelSegment.swift in Sources */,
 				8BC4531024FA220600D32216 /* MenuCellViewModel.swift in Sources */,
-				8B66623124FA6FF100FE016B /* DynamicSegmentControl.swift in Sources */,
 				8B66622024FA293200FE016B /* SectionHeaderView.swift in Sources */,
+				8B1554122504F3B100C42727 /* SegmentProtocol.swift in Sources */,
 				8B66621B24FA273900FE016B /* MenuList+TableView.swift in Sources */,
 				8B66622524FA5B7D00FE016B /* Item.swift in Sources */,
 				8BC4531224FA23E100D32216 /* ItemViewModel.swift in Sources */,
 				8B66622224FA302D00FE016B /* MyCustomSegmentControl.swift in Sources */,
+				8B1554102504F39000C42727 /* CustomSegmentControlOptions.swift in Sources */,
 				8B6661F624F944FF00FE016B /* ViewController.swift in Sources */,
 				8B6661F224F944FF00FE016B /* AppDelegate.swift in Sources */,
+				8B1554142504F3D600C42727 /* ThumbView.swift in Sources */,
+				8B15540C2504F35300C42727 /* CustomSegmentedControl.swift in Sources */,
 				8B66621124F9461D00FE016B /* MenuCell.swift in Sources */,
 				8B66622724FA5BA800FE016B /* RestaurantMenu.swift in Sources */,
-				8B6B94B824FE7A92006EC9AD /* CustomCollectionCell.swift in Sources */,
 				8B6661F424F944FF00FE016B /* SceneDelegate.swift in Sources */,
-				8B6B94BA24FE7B6F006EC9AD /* MenuList+CollectionView.swift in Sources */,
 				8B66620D24F945F100FE016B /* MenuListViewController.swift in Sources */,
 				8B66620F24F945FF00FE016B /* MenuListViewModel.swift in Sources */,
 			);

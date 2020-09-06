@@ -10,10 +10,8 @@ import UIKit
 class MenuListViewController: UIViewController {
    @IBOutlet var tableView:UITableView!
    @IBOutlet var segmentControl:MyCustomSegmentControl!
-   var dynamicSegmentControl:DynamicSegmentControl!
-   
-   @IBOutlet weak var collectionView:UICollectionView!
-   
+  
+
    @IBOutlet var scrollView : UIScrollView!
    var isManualScroll:Bool = false
    var viewModel: MenuListViewModel!
@@ -40,22 +38,20 @@ class MenuListViewController: UIViewController {
         fillData()
         configureUI()
         registerHeader()
+        addSegments()
         
-        collectionView.reloadData()
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    addSelectedView()
-     
-    // collectionView.layer.mask = selectedView.layer
-}
-    func addSelectedView(){
 
-        selectedView.layer.cornerRadius = selectedView.frame.height/2
-        collectionView.addSubview(selectedView)
-     //   collectionView.insertSubview(selectedView, at: 0)
-        moveSelectedView(to: 0)
+}
+
+     func addSegments(){
+        let viewControl = CustomSegmentedControl(frame: CGRect(x: 0.0, y: 0.0, width: view.bounds.width, height: 40.0), segments: CustomLabelSegment.getSegments(with: ["Indian Food","Chinese Food ","Mexican","Italian","Indian","AASD","American Food menu","Zomato special menu","asdasdas","asdasdasdasd"], textColor: .black, backgroundColor: UIColor.black, selectedTextColor: UIColor.white, selectedBackgroundColor: UIColor.black, font: UIFont.systemFont(ofSize: 16)), defaultIndex: 0,options: [.selectorBackgroundColor(UIColor.white),.cornerRadius(20.0)])
+
+        view.addSubview(viewControl)
     }
     
     func registerHeader(){
@@ -102,8 +98,6 @@ class MenuListViewController: UIViewController {
         guard index < viewModel.numberOfSections else { return }
         segmentControl.setSegmentSelected(index: index)
         currentVisibleSection = index
-        collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .right, animated: true)
-
     }
     
     func scrollTableView(_ section:Int,animated: Bool = true){
